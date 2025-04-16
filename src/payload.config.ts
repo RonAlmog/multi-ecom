@@ -30,6 +30,9 @@ export default buildConfig({
     Categories,
     {
       slug: "cars",
+      admin: {
+        useAsTitle: "name",
+      },
       fields: [
         {
           name: "name",
