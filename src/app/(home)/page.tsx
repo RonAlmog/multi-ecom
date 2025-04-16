@@ -12,7 +12,7 @@ export default function Home() {
       </Button>
       <Input placeholder="hey input" />
       <div>
-        <Textarea>hello textarea</Textarea>
+        <Textarea placeholder="Type your message here." />
       </div>
       <div>
         <Progress value={70} />
