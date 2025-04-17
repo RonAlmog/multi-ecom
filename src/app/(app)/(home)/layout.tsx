@@ -5,6 +5,7 @@ import { Footer } from "./footer";
 import { Navbar } from "./navbar";
 import { SearchFilters } from "./search-filters";
 import { Category } from "@/payload-types";
+import { CustomCategory } from "./types";
 
 export default async function Layout({
   children,
@@ -23,10 +24,11 @@ export default async function Layout({
         exists: false,
       },
     },
+    sort: "name",
   });
   console.log({ data });
 
-  const formattedData = data.docs.map((doc) => ({
+  const formattedData: CustomCategory[] = data.docs.map((doc) => ({
     ...doc,
     subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
       // depth is 1, so we are confident that doc is of type Category
