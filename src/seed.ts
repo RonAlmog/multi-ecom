@@ -40,7 +40,7 @@ const categories = [
       },
       {
         name: "Web Development",
-        slug: "wen",
+        slug: "web-dev",
       },
       {
         name: "Backend with FastAPI",
