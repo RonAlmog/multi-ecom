@@ -9,14 +9,17 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronLeft, ChevronRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { useTRPC } from "@/trpc/client";
 
 interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  data: CustomCategory[];
 }
 
-const CategoriesSidebar = ({ open, onOpenChange, data }: Props) => {
+const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
+  const trpc = useTRPC();
+  const { data } = useQuery(trpc.categories.getMany.queryOptions());
   const router = useRouter();
   const [parentCategories, setParentCategories] = useState<
     CustomCategory[] | null

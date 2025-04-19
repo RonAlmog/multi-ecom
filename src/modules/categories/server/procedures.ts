@@ -23,7 +23,6 @@ export const categoriesRouter = createTRPCRouter({
         subcategories: undefined,
       })),
     }));
-    console.log(data, formattedData);
 
     return formattedData;
   }),
