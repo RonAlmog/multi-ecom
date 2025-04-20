@@ -25,7 +25,7 @@ const CategoryDropdown = ({
   const dropdownPosition = getDropdownPosition();
 
   const toggleDropdown = () => {
-    if (category.subcategories?.docs?.length) {
+    if (category.subcategories?.length) {
       setIsOpen(!isOpen);
     }
   };
