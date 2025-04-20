@@ -127,7 +127,7 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
-  username: string;
+  username?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
