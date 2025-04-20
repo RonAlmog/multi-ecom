@@ -10,7 +10,7 @@ export const Users: CollectionConfig = {
     {
       name: "username",
       type: "text",
-      required: true,
+      required: false,
       unique: true,
     },
   ],
