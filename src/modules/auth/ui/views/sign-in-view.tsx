@@ -51,7 +51,6 @@ export const SignInView = () => {
   });
 
   const onSubmit = (values: LoginData) => {
-    console.log({ values });
     login.mutate(values);
   };
 

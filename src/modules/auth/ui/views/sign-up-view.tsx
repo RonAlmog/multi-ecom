@@ -54,7 +54,6 @@ export const SignUpView = () => {
   });
 
   const onSubmit = (values: RegisterData) => {
-    console.log({ values });
     register.mutate(values);
   };
 
