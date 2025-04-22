@@ -70,7 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     categories: Category;
-    cars: Car;
+    products: Product;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -84,7 +84,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    cars: CarsSelect<false> | CarsSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -178,11 +178,19 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cars".
+ * via the `definition` "products".
  */
-export interface Car {
+export interface Product {
   id: string;
   name: string;
+  description?: string | null;
+  /**
+   * Price in USD
+   */
+  price: number;
+  category?: (string | null) | Category;
+  image?: (string | null) | Media;
+  refundPolicy?: ('30-day' | '14-day' | '3-day' | 'no-refunds') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -206,8 +214,8 @@ export interface PayloadLockedDocument {
         value: string | Category;
       } | null)
     | ({
-        relationTo: 'cars';
-        value: string | Car;
+        relationTo: 'products';
+        value: string | Product;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -300,10 +308,15 @@ export interface CategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cars_select".
+ * via the `definition` "products_select".
  */
-export interface CarsSelect<T extends boolean = true> {
+export interface ProductsSelect<T extends boolean = true> {
   name?: T;
+  description?: T;
+  price?: T;
+  category?: T;
+  image?: T;
+  refundPolicy?: T;
   updatedAt?: T;
   createdAt?: T;
 }
